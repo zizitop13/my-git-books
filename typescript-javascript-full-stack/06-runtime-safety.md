@@ -33,20 +33,23 @@ Imagine the API returns:
 ```
 
 1. Will TypeScript compile this code?
+
+<textarea name="q6-1" rows="3" placeholder="Your answer"></textarea>
+
 2. What happens at runtime?
+
+<textarea name="q6-2" rows="3" placeholder="Your answer"></textarea>
+
 3. How would you make this code type-safe in production?
+
+<textarea name="q6-3" rows="3" placeholder="Your answer"></textarea>
+
 
 <!-- pagebreak -->
 
-## Your answer
+## Correct answer
 
-1. Yes I think
-2. Some exception related to custing
-3. Use some typescript fancy pattern😅
-
-## Feedback
-
-You're on the right track. **2/3 conceptually.** The missing piece is runtime validation.
+Runtime validation is required.
 
 Yes, it compiles. as User is a type assertion, not a cast in the Java sense. It tells the TypeScript compiler to treat the value as a User, but doesn't validate or transform anything at runtime.
 
