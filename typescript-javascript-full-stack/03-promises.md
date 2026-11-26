@@ -38,18 +38,23 @@ loadDashboard();
 ```
 
 1. What will be printed to the console, and approximately when?
+
+<textarea name="q3-1" rows="3" placeholder="Your answer"></textarea>
+
 2. What happens to fetchRecommendations() when fetchOrders() fails?
+
+<textarea name="q3-2" rows="3" placeholder="Your answer"></textarea>
+
 3. How would you modify the code to return the user and recommendations even if orders fail?
+
+<textarea name="q3-3" rows="3" placeholder="Your answer"></textarea>
+
 
 <!-- pagebreak -->
 
-## Your answer
+## Correct answer
 
-1. nothing?
-
-## Feedback
-
-Not quite. Two messages will be printed:
+Two messages will be printed:
 
 ```text
 ~200 ms: Dashboard failed
@@ -66,20 +71,16 @@ At 100 ms fetchUser resolves; nothing is printed. At 200 ms fetchOrders rejects,
 
 Suppose we want the dashboard to display whatever data is available, even if some services fail. Which approach would you choose?
 
-- [ ] A. Replace Promise.all() with Promise.race()
-- [ ] B. Replace Promise.all() with Promise.allSettled()
-- [ ] C. Add another try/catch around Promise.all()
-- [ ] D. Add await before each individual function call
+<p><label><input type="radio" name="q3-followup" value="A"> A. Replace Promise.all() with Promise.race()</label></p>
+<p><label><input type="radio" name="q3-followup" value="B"> B. Replace Promise.all() with Promise.allSettled()</label></p>
+<p><label><input type="radio" name="q3-followup" value="C"> C. Add another try/catch around Promise.all()</label></p>
+<p><label><input type="radio" name="q3-followup" value="D"> D. Add await before each individual function call</label></p>
 
 <!-- pagebreak -->
 
-## Your answer
+## Correct answer
 
-My answer is D. Please evaluate it and show how to implement partial dashboard results in TypeScript.
-
-## Feedback
-
-D is not the best answer. **The correct answer is B — Promise.allSettled().** D could work with individual try/catch blocks, but sequential awaits make independent requests run one after another.
+**B — Promise.allSettled().** D could work with individual try/catch blocks, but sequential awaits make independent requests run one after another.
 
 | Behavior | Promise.all() | Promise.allSettled() |
 |---|---|---|
@@ -126,7 +127,7 @@ After approximately 500 ms:
 
 Returning [] for failed orders makes failure indistinguishable from a successful empty result. In production, preserve error status as well.
 
-### What about your answer D?
+### Why not option D?
 
 ```typescript
 async function loadDashboard() {
