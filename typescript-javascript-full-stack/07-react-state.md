@@ -23,20 +23,23 @@ function Counter() {
 ```
 
 1. When the user clicks the button once, what number will be displayed?
+
+<textarea name="q7-1" rows="3" placeholder="Your answer"></textarea>
+
 2. Why?
+
+<textarea name="q7-2" rows="3" placeholder="Your answer"></textarea>
+
 3. How would you modify increment() so that one click increases the counter by 3?
+
+<textarea name="q7-3" rows="3" placeholder="Your answer"></textarea>
+
 
 <!-- pagebreak -->
 
-## Your answer
+## Correct answer
 
-1. 1
-2. count variable is a current state value.
-3. Count+3
-
-## Feedback
-
-**3/3 — correct!** React's count variable is a snapshot of state for the current render. Calling setCount() doesn't change that snapshot.
+React's count variable is a snapshot of state for the current render. Calling setCount() doesn't change that snapshot.
 
 ```tsx
 setCount(0 + 1);
@@ -46,7 +49,7 @@ setCount(0 + 1);
 
 React batches these updates, and the displayed value becomes 1.
 
-Your solution works:
+One solution is:
 
 ```tsx
 setCount(count + 3);
