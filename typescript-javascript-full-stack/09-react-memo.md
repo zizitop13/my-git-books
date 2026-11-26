@@ -35,11 +35,39 @@ function Parent() {
 ```
 
 1. When the Increment button is clicked, does Child re-render?
+
+<textarea name="q9-1" rows="3" placeholder="Your answer"></textarea>
+
 2. Why doesn't React.memo() prevent it?
+
+<textarea name="q9-2" rows="3" placeholder="Your answer"></textarea>
+
 3. How would you fix the unnecessary re-render?
+
+<textarea name="q9-3" rows="3" placeholder="Your answer"></textarea>
+
 
 Bonus: Would you always apply this optimization in production?
 
-Try all three. This is a common distinction between understanding React's API and understanding its rendering model.
+<textarea name="q9-Bonus" rows="3" placeholder="Your answer"></textarea>
 
-*Not answered yet in our chat.*
+
+<!-- pagebreak -->
+
+## Correct answer
+
+1. Yes. Child re-renders when Parent renders because handleClick is a new function reference.
+2. React.memo compares each prop using Object.is by default. The callback reference changes even though its behavior is identical.
+3. Use useCallback with the appropriate dependencies:
+
+```tsx
+import { useCallback } from "react";
+
+const handleClick = useCallback(() => {
+  console.log("Clicked");
+}, []);
+```
+
+The stable callback lets memo skip a parent-driven render when other props are unchanged. Local state and context changes can still trigger renders.
+
+**Bonus:** No. Measure first; memoization adds overhead and complexity. Use it when the avoided rendering work is meaningful.
