@@ -14,7 +14,7 @@ toc:
 
 # TypeScript / JavaScript Full-Stack Interview Preparation
 
-My personal technical preparation for the Alignerr / Zara AI interview. Based on our chat, focusing on TypeScript, Node.js and React with comparisons to Java. Answer each question before turning the page to review my original answer and feedback. Question 9 is still open.
+My personal technical preparation for the Alignerr / Zara AI interview. Based on our chat, focusing on TypeScript, Node.js and React with comparisons to Java. Enter your answers or select a choice before turning the page to see the correct answer and explanation. Every question is reusable.
 
 ## Questions
 
