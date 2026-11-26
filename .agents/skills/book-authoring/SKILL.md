@@ -34,6 +34,10 @@ description: Create, extend, or edit Markdown books and handbooks in this reposi
 9. Do not silently invent facts, references, implementation behavior, or citations. Mark uncertainties and unresolved decisions.
 10. Keep links and assets relative to the chapter or book folder; avoid absolute machine paths and links to uncommitted local files.
 
+## Personal books from conversations
+
+These books are for the repository owner, not a generic audience. When asked to turn a chat into a book, treat the conversation as the source of truth. Preserve the original language, sequence, question numbering, code, quiz choices, user's answers (including mistakes and informal wording), feedback, explanations, examples, and Java comparisons. Do not replace them with a generic tutorial or invent new questions or answers. Omit unrelated logistics unless requested. Convert chat-only widgets to equivalent Markdown; keep questions and choices before a standalone `<!-- pagebreak -->`, then the user's recorded answer and feedback. Leave unanswered questions open; do not spoil them. Preserve follow-up quizzes in their original position. Use one chapter per question where practical. If a source answer contains a technical error, preserve it and label a separate correction rather than silently rewriting it. If exact source text is unavailable, disclose the gap instead of fabricating a transcript. For a revision explicitly requesting chat fidelity, remove superseded generic chapters and update all links.
+
 ## Completion checklist
 
 - Root entry file exists and is a useful introduction.
