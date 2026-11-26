@@ -10,6 +10,7 @@ toc:
   - 07-react-state.md
   - 08-react-effects.md
   - 09-react-memo.md
+  - 10-jsx.md
 ---
 
 # TypeScript / JavaScript Full-Stack Interview Preparation
@@ -27,3 +28,4 @@ My personal technical preparation for the Alignerr / Zara AI interview. Based on
 - [Question 7 — React hooks](07-react-state.md)
 - [Question 8 — React useEffect and race conditions](08-react-effects.md)
 - [Question 9 — React rendering and memoization](09-react-memo.md)
+- [Question 10 — How JSX works](10-jsx.md)
