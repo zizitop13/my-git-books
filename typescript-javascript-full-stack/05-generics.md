@@ -22,24 +22,29 @@ const c = getProperty(user, "email");
 ```
 
 1. What are the inferred types of a and b?
+
+<textarea name="q5-1" rows="3" placeholder="Your answer"></textarea>
+
 2. Will the assignment to c compile?
+
+<textarea name="q5-2" rows="3" placeholder="Your answer"></textarea>
+
 3. What do keyof T and T[K] mean?
+
+<textarea name="q5-3" rows="3" placeholder="Your answer"></textarea>
+
 
 <!-- pagebreak -->
 
-## Your answer
+## Correct answer
 
-String, Boolean, undefined
+The inferred types and compilation result are:
 
-## Feedback
-
-You're **2/3 correct**.
-
-| Variable | Your answer | Actual result |
-|---|---|---|
-| a | String | string |
-| b | Boolean | boolean |
-| c | undefined | Compilation error |
+| Variable | Correct result |
+|---|---|
+| a | string |
+| b | boolean |
+| c | Compilation error |
 
 TypeScript uses lowercase string and boolean for primitive types.
 
