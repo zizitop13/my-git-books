@@ -24,21 +24,27 @@ function heavyCalculation(): number {
 Imagine 100 users send requests simultaneously.
 
 1. What happens to the Node.js server?
+
+<textarea name="q2-1" rows="3" placeholder="Your answer"></textarea>
+
 2. Does declaring the handler async help?
+
+<textarea name="q2-2" rows="3" placeholder="Your answer"></textarea>
+
 3. How would you solve this problem in production?
+
+<textarea name="q2-3" rows="3" placeholder="Your answer"></textarea>
+
 4. Would Promise.all() help here?
+
+<textarea name="q2-4" rows="3" placeholder="Your answer"></textarea>
+
 
 <!-- pagebreak -->
 
-## Your answer
+## Correct answer
 
-As I understand havycalc is a CPU heavy, and asynchronous event loop will sequentially handle each heavy tasks, so requests could stack.
-
-CPU bound tasks should go through multiple cores, but I don't know how to do that with nodes
-
-## Feedback
-
-Your reasoning is correct. **You've identified the main architectural problem: CPU-bound work blocks the Node.js event loop.** I'd rate this answer **7/10**.
+CPU-bound work blocks the Node.js event loop.
 
 While heavyCalculation() executes, other JavaScript request handlers cannot run, timers and Promise callbacks are delayed, and even lightweight endpoints such as /health may become unresponsive.
 
