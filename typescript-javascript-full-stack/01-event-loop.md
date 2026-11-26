@@ -32,15 +32,14 @@ console.log("G");
 
 Explain **why** the output appears in that order, including the difference between the call stack, microtask queue, and timer callbacks.
 
+
+<textarea name="q1-output" rows="3" placeholder="Your answer"></textarea>
+
 <!-- pagebreak -->
 
-## Your answer
+## Correct answer
 
-A then in any order B C D E F then G
-
-## Feedback
-
-Not quite. The order is **deterministic**, not random.
+The order is **deterministic**.
 
 ```text
 A
