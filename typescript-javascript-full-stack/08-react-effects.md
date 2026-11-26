@@ -28,20 +28,28 @@ Imagine the following sequence:
 | 300 ms | Request A completes |
 
 1. Which user's name will be displayed after 300 ms?
+
+<textarea name="q8-1" rows="3" placeholder="Your answer"></textarea>
+
 2. What is the underlying problem?
+
+<textarea name="q8-2" rows="3" placeholder="Your answer"></textarea>
+
 3. How would you fix it?
+
+<textarea name="q8-3" rows="3" placeholder="Your answer"></textarea>
+
 
 Bonus: What happens if the component unmounts while a request is still running?
 
+<textarea name="q8-Bonus" rows="3" placeholder="Your answer"></textarea>
+
+
 <!-- pagebreak -->
 
-## Your answer
+## Correct answer
 
-1. A
-
-## Feedback
-
-Correct! After 300 ms, the component displays User A, even though the current userId is 2. This is a classic race condition caused by stale asynchronous responses.
+After 300 ms, the component displays User A, even though the current userId is 2. This is a classic race condition caused by stale asynchronous responses.
 
 Request B finishes at 100 ms and calls setUser(B). Request A finishes at 300 ms and calls setUser(A), overwriting the newer result. React doesn't automatically know that request A is obsolete.
 
