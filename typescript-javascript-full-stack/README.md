@@ -1,25 +1,29 @@
 ---
 title: TypeScript / JavaScript Full-Stack Interview Preparation
 toc:
-  - 01-javascript.md
-  - 02-async.md
-  - 03-typescript.md
-  - 04-node.md
-  - 05-react.md
-  - 06-full-stack.md
-  - 07-practice.md
+  - 01-event-loop.md
+  - 02-node-concurrency.md
+  - 03-promises.md
+  - 04-structural-typing.md
+  - 05-generics.md
+  - 06-runtime-safety.md
+  - 07-react-state.md
+  - 08-react-effects.md
+  - 09-react-memo.md
 ---
 
 # TypeScript / JavaScript Full-Stack Interview Preparation
 
-A senior-level handbook for experienced Java developers preparing for TypeScript, Node.js and React interviews. Predict code output and rehearse answers aloud before looking at solutions.
+My personal technical preparation for the Alignerr / Zara AI interview. Based on our chat, focusing on TypeScript, Node.js and React with comparisons to Java. Answer each question before turning the page to review my original answer and feedback. Question 9 is still open.
 
-## Chapters
+## Questions
 
-- [JavaScript foundations](01-javascript.md)
-- [Event loop and promises](02-async.md)
-- [TypeScript type system](03-typescript.md)
-- [Node.js backend](04-node.md)
-- [React frontend](05-react.md)
-- [Full-stack architecture](06-full-stack.md)
-- [Mock interview](07-practice.md)
+- [Question 1 — JavaScript Event Loop](01-event-loop.md)
+- [Question 2 — Node.js concurrency](02-node-concurrency.md)
+- [Question 3 — Promise.all and error handling](03-promises.md)
+- [Question 4 — TypeScript type system](04-structural-typing.md)
+- [Question 5 — TypeScript generics and type safety](05-generics.md)
+- [Question 6 — TypeScript runtime safety](06-runtime-safety.md)
+- [Question 7 — React hooks](07-react-state.md)
+- [Question 8 — React useEffect and race conditions](08-react-effects.md)
+- [Question 9 — React rendering and memoization](09-react-memo.md)
