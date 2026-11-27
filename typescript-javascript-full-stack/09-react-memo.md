@@ -1,6 +1,144 @@
 # Question 9 — React rendering and memoization
 
-**React / Performance — Senior**
+**React / Performance — From fundamentals to senior interview questions**
+
+## 1. Start with rendering
+
+A React function component is a JavaScript function that returns a description of the UI. Rendering means React calls that function. Re-rendering does not necessarily recreate DOM nodes.
+
+```tsx
+function Child() {
+  console.log("Child rendered");
+  return <p>I am a child</p>;
+}
+
+function Parent() {
+  const [count, setCount] = useState(0);
+  console.log("Parent rendered");
+  return (
+    <div>
+      <Child />
+      <button onClick={() => setCount(count + 1)}>
+        {count}
+      </button>
+    </div>
+  );
+}
+```
+
+On initial mount, React calls Parent, then Child. When the button is clicked, setCount schedules a Parent update. By default React also renders Child, even though Child does not use count. The existing DOM paragraph can remain unchanged.
+
+```mermaid
+flowchart TD
+ A[Click button] --> B[Parent state update]
+ B --> C[Call Parent]
+ C --> D[Call Child]
+ D --> E[Commit necessary DOM changes]
+```
+
+## 2. What is memo?
+
+memo is a React function that takes a component and returns a memoized component. Replace the Child declaration above with:
+
+```tsx
+import { memo } from "react";
+
+const Child = memo(function Child() {
+  console.log("Child rendered");
+  return <p>I am a child</p>;
+});
+```
+
+Now React can skip calling Child when Parent updates because Child has no changed props. Parent still renders and the button text still updates.
+
+```mermaid
+flowchart TD
+ A[Parent renders] --> B{Child props unchanged?}
+ B -->|Yes| C[Skip Child render]
+ B -->|No| D[Call Child]
+ C --> E[Commit necessary changes]
+ D --> E
+```
+
+Child's own state or consumed context can still cause it to render. memo is an optimization, not a guarantee.
+
+## 3. What is a callback?
+
+A callback is a function passed to another function or component so it can be invoked later. It is an ordinary JavaScript concept, not a special React feature.
+
+```tsx
+function handleClick() {
+  console.log("Clicked");
+}
+
+<Child onClick={handleClick} />
+```
+
+The child receives a function reference as a prop. It can pass it to a button or call it in an event handler.
+
+In Java, a similar idea is passing a Runnable to another object:
+
+```java
+Runnable callback = () -> System.out.println("Clicked");
+child.setOnClick(callback);
+```
+
+## 4. Why function identity matters
+
+```ts
+const a = () => console.log("Hello");
+const b = () => console.log("Hello");
+
+console.log(a === b); // false
+```
+
+These functions contain the same code but are distinct objects. When a component executes again, a function expression inside it creates another function object.
+
+React memo compares each prop with Object.is by default. It does not compare function bodies. A new callback reference therefore counts as a changed prop.
+
+## 5. What is useCallback?
+
+```tsx
+import { useCallback } from "react";
+
+const handleClick = useCallback(() => {
+  console.log("Clicked");
+}, []);
+```
+
+useCallback is a hook that returns a cached function reference while its dependencies remain unchanged. The empty dependency array means this callback has no changing reactive dependencies.
+
+| Parent render | Ordinary callback | useCallback with [] |
+| --- | --- | --- |
+| First | Function A | Function A |
+| Second | Function B | Function A |
+| Third | Function C | Function A |
+
+It does not stop Parent rendering. It allows a memoized Child to receive the same callback reference and potentially skip rendering.
+
+## 6. What is useMemo?
+
+useMemo caches a calculation result rather than specifically caching a function reference.
+
+```tsx
+const sortedUsers = useMemo(() => {
+  return [...users].sort(compareUsers);
+}, [users]);
+```
+
+Assume compareUsers is a stable function defined outside the component. React can reuse the result until users changes by reference. If users is recreated every render, this cache will not help.
+
+| API | Purpose |
+| --- | --- |
+| memo | Skip unnecessary component renders |
+| useCallback | Preserve a function reference |
+| useMemo | Cache a calculated value |
+
+All three are performance optimizations. Do not rely on them for application correctness.
+
+<!-- pagebreak -->
+
+## Practice — combine the concepts
 
 ```tsx
 import { useState, memo } from "react";
@@ -205,6 +343,8 @@ Do not omit dependencies merely to make memoization work.
 memo is a performance optimization, not a semantic guarantee. React may still render a memoized component. Custom comparison functions must compare every relevant prop, including functions; ignoring changed callbacks can preserve stale closures. Deep comparison may cost more than rendering.
 
 If React Compiler is enabled, it can automatically apply many equivalent memoization optimizations. Do not assume it is enabled in every project.
+
+<!-- pagebreak -->
 
 ## Follow-up quiz — rendering order
 
